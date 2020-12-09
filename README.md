@@ -18,11 +18,11 @@ Consulte **Instalação** para saber como implantar o sistema.
 De que coisas você precisa para instalar o software e como instalá-lo?
 
 ```
-Instalar o XAMPP e executar o servidor web browser
-Rodar o script de criação do banco de dados
-Criar uma pasta com um nome personalizado
-Clonar esse repositorio para a pasta C:\xampp\htdocs\nome\
-No seu navegador digitar C:\xampp\htdocs\nome\pastaSistema\web\public\index.html
+- Instalar o XAMPP e executar o servidor web browser
+- Rodar o script de criação do banco de dados
+- Criar uma pasta com um nome personalizado
+- Clonar esse repositorio para a pasta C:\xampp\htdocs\nome\
+- No seu navegador digitar C:\xampp\htdocs\nome\pastaSistema\web\public\index.html
 ```
 
 ### 🔧 Instalação

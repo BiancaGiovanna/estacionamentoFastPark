@@ -5,4 +5,14 @@
     box-sizing: border-box;
     
 }
-
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #e8e8e8;
+}
+a:link, a:visited, a:active{
+    text-decoration: none;
+    color: var(--color-text-base);
+}
+.hidden{
+    display:none;
+}

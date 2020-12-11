@@ -5,42 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/style/partial/menu.css">
+    <link rel="stylesheet" href="../src/style/partial/cms.css">
+
     <link rel="stylesheet" href="../src/style/main.css">
+    
     <link rel="shortcut icon" href="../src/image/icons/icon-car.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <title>Fast Parking</title>
 </head>
 
 <body>
-    <header>
-        <img src="../src/image/icons/logo.PNG" alt="">
-    </header>
-    <div id="menuLateral">
-        <div class="iconMenu">
-            <img src="../src/image/icons/home_icon.svg" alt="home">
-            <h3>Home</h3>
+    <div class="boxCenter">
+        <header>
+            <img src="../src/image/icons/logo.PNG" alt="">
+        </header> 
+        <div id="menuLateral">
+            <div class="iconMenu">
+                <a href="#">
+                <img src="../src/image/icons/home_icon.svg" alt="home">
+                <h3>Home</h3>
+            </a>
+    
+            </div>
+    
+            <div class="iconMenu">
+                <img src="../src/image/icons/entrada_icon.svg" alt="entrada">
+                <h3>Entrada</h3>
+            </div>
+            <div class="iconMenu">
+                <img src="../src/image/icons/saida_icon.svg" alt="saida">
+                <h3>Saída</h3>
+            </div>
+            <div class="iconMenu">
+                <img src="../src/image/icons/preco_icon.svg" alt="preço">
+                <h3>Preço</h3>
+            </div>
+            <div class="iconMenu">
+                <img src="../src/image/icons/vagas_icon.svg" alt="vagas">
+                <h3>Vagas</h3>
+            </div>
+            <div class="iconMenu">
+                <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
+                <h3>Relatorio</h3>
+            </div>
         </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/entrada_icon.svg" alt="entrada">
-            <h3>Entrada</h3>
+        <div id="registrationBox1">
+            <label id="textResgister">Preencha o formulário abaixo para cadastrar</label>
+            <label id="carPlate">Placa do carro *</label>
+            <input type="text" id="inputPlate">
+
+            <label id="vacancyBlocks">Bloco de Vagas *</label>
+            <select id="vacancyBlocksSelect">
+
+            </select>
+
+            <button>cadastrar</button>
         </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/saida_icon.svg" alt="saida">
-            <h3>Saída</h3>
-        </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/preco_icon.svg" alt="preço">
-            <h3>Preço</h3>
-        </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/vagas_icon.svg" alt="vagas">
-            <h3>Vagas</h3>
-        </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
-            <h3>Relatorio</h3>
+        <div id="registrationBox2">
+
         </div>
     </div>
+
+    
+
+
+
 </body>
 
 </html>

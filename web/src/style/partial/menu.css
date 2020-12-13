@@ -1,7 +1,7 @@
 #menuLateral {
-    position: absolute;
-    width: 110px;
-    height: 90vh;
+    width: 120px;
+    min-height: 90vh;
+    height: auto;
     background-color: rgb(17, 85, 130);
     display: flex;
     align-items: center;
@@ -18,8 +18,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* border: 1px solid black; */
-
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
 }

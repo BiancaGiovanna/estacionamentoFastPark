@@ -56,14 +56,18 @@ header img{
     flex-direction: column;
 }
 label{
+    font-size: 1.8rem;
     color: #115582;
 }
-input[type="text"],select{
+input[type="text"],
+select{
     width: 250px;
     height: 50px;
-    font-size: 1.9rem;
+    font-size: 1.4rem;
     border: 2px solid #115582;
     padding-left: 5px;
+    border-radius: 10px;
+
 }
 .tableControl{
     width: 1200px;
@@ -73,8 +77,6 @@ input[type="text"],select{
     border-radius: 20px;
     flex-direction: column;
     align-items: center;
-
-    
     overflow-x: hidden;
     overflow-y: scroll;
     background:#fff;
@@ -157,5 +159,31 @@ td{
     color: #D8C40A;
 }
 .registerPrice{
-    background: #ffffff;; 
+    border-radius: 20px;
+    width: 1200px;
+    height: 150px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-bottom: 15px;
+    background: #ffffff;
 }
+.registerPrice button{
+    top: 30px;
+    left: 150px;
+}
+.priceManagement{
+    width: 1200px;
+    min-height: 500px;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff;
+
+}
+/* .tablePriceManageme{
+    /* overflow-x: hidden;
+    overflow-y: scroll; 
+} */

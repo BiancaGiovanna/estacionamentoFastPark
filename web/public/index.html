@@ -1,207 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/style/partial/menu.css">
     <link rel="stylesheet" href="../src/style/partial/cms.css">
-
     <link rel="stylesheet" href="../src/style/main.css">
-    
     <link rel="shortcut icon" href="../src/image/icons/icon-car.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <title>Fast Parking</title>
 </head>
 
 <body>
-        <header>
-            <img src="../src/image/icons/logo.PNG" alt="">
-        </header>
-        <div id="contentCenter">
-            <div id="menuLateral">
-                <!-- <div class="iconMenu">
-                    <a href="#">
-                    <img src="../src/image/icons/home_icon.svg" alt="home">
-                    <h3>Home</h3>
+    <header>
+        <img src="../src/image/icons/logo.PNG" alt="">
+    </header>
+    <div id="contentCenter">
+        <div id="menuLateral">
+            <!-- <div class="iconMenu">
+                <a href="#">
+                <img src="../src/image/icons/home_icon.svg" alt="home">
+                <h3>Home</h3>
+            </a>
+            </div> -->
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_entrance">
+                    <img src="../src/image/icons/entrada_icon.svg" alt="entrada">
+                    <h3>Entrada</h3>
                 </a>
-                </div> -->
-                <div class="iconMenu">
-                    <a href="#" onclick="switch_page(this);" id="tab_entrance">
-                        <img src="../src/image/icons/entrada_icon.svg" alt="entrada">
-                        <h3>Entrada</h3>
-                    </a>
-                </div>
-                <div class="iconMenu">
-                    <a href="#" onclick="switch_page(this);" id="tab_exit">
-                        <img src="../src/image/icons/saida_icon.svg" alt="saida">
-                        <h3>Saída</h3>
-                    </a>
-                </div>
-                <div class="iconMenu">
-                        <img src="../src/image/icons/preco_icon.svg" alt="preço">
-                        <h3>Preço</h3>
-                    </div>
-                <div class="iconMenu">
-                    <a href="#" onclick="switch_page(this);" id="tab_vacancies">
-                        <img src="../src/image/icons/vagas_icon.svg" alt="vagas">
-                        <h3>Vagas</h3>
-                    </a>
-                </div>
-                <div class="iconMenu">
-                    <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
-                    <h3>Relatorio</h3>
-                </div>
             </div>
-
-            <div class="contentPaking">
-                <div id="entranceVacancies" class="boxVacancies hidden">
-                    <div class="boxVacancies">
-                        <form action="">
-                            <h2>Preencha o formulário abaixo para cadastrar</h2>
-                            <div class="contentInpunt">
-                                <div class="boxInputStyle">
-                                    <label>Placa do Carro *</label>
-                                    <input type="text">
-                                </div>
-                                <div class="boxInputStyle">
-                                    <label>Bloco de Vagas *</label>
-                                    <select>
-                                        <option>Opção</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button>Cadastrar</button>
-                        </form>
-                    </div>
-                    <div class="tableControl">
-                        <h2>Clientes</h2>
-                        <table class="tableConsut">
-                            <tr class="tableLine">
-                                <td>Placa</td>
-                                <td>Bloco</td>
-                                <td>Comprovante</td>
-                                <td>Data de Entrada </td>
-                            </tr>
-                            
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">A</td>
-                                <td class="tableLineStyle"></td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr><tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                        </table>
-                    </div>
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_exit">
+                    <img src="../src/image/icons/saida_icon.svg" alt="saida">
+                    <h3>Saída</h3>
+                </a>
+            </div>
+            <div class="iconMenu">
+                    <img src="../src/image/icons/preco_icon.svg" alt="preço">
+                    <h3>Preço</h3>
                 </div>
-
-                <div id="exit" class="boxVacancies hidden">
-                    <div class="boxVacancies">
-                        <form action="">
-                            <h2>Preencha o formulário abaixo para calcular o pagamento </h2>
-                            <div class="contentInpunt">
-                                <div class="boxInputStyle">
-                                    <label>Placa do Carro *</label>
-                                    <input type="text">
-                                </div>
-                                <div class="boxInputStyle">
-                                    <label>Codigo de Entrada *</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <button>Cobrar</button>
-                        </form>
-                    </div>
-                    <div class="tableControl">
-                        <h2>Clientes</h2>
-                        <table class="tableConsut">
-                            <tr class="tableLine">
-                                <td>Placa</td>
-                                <td>Bloco</td>
-                                <td>Comprovante</td>
-                                <td>Data de Entrada </td>
-                            </tr>
-                            
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">A</td>
-                                <td class="tableLineStyle"></td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr><tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                            <tr>
-                                <td class="tableLineStyle">lor</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                                <td class="tableLineStyle">1</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="hidden waveControl"  id="waveControlPage">
-                    <div class="waveControl"> 
-                        <div class="cardsContainer" ></div>
-                    </div>
-                </div>
-                
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_vacancies">
+                    <img src="../src/image/icons/vagas_icon.svg" alt="vagas">
+                    <h3>Vagas</h3>
+                </a>
+            </div>
+            <div class="iconMenu">
+                <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
+                <h3>Relatorio</h3>
             </div>
         </div>
 
+        <div class="contentPaking">
+            <div id="entranceVacancies" class="boxVacancies hidden">
+                <div class="boxVacancies">
+                    <form action="">
+                        <h2>Preencha o formulário abaixo para cadastrar</h2>
+                        <div class="contentInpunt">
+                            <div class="boxInputStyle">
+                                <label>Placa do Carro *</label>
+                                <input type="text">
+                            </div>
+                            <div class="boxInputStyle">
+                                <label>Bloco de Vagas *</label>
+                                <select>
+                                    <option>Opção</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button>Cadastrar</button>
+                    </form>
+                </div>
+                <div class="tableControl">
+                    <h2>Clientes</h2>
+                    <table class="tableConsut">
+                        <tr class="tableLine">
+                            <td>Placa</td>
+                            <td>Bloco</td>
+                            <td>Comprovante</td>
+                            <td>Data de Entrada </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+
+            <div id="exit" class="boxVacancies hidden">
+                <div class="boxVacancies">
+                    <form action="">
+                        <h2>Preencha o formulário abaixo para calcular o pagamento </h2>
+                        <div class="contentInpunt">
+                            <div class="boxInputStyle">
+                                <label>Placa do Carro *</label>
+                                <input type="text">
+                            </div>
+                            <div class="boxInputStyle">
+                                <label>Codigo de Entrada *</label>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <button>Cobrar</button>
+                    </form>
+                </div>
+                <div class="tableControl">
+                    <h2>Clientes</h2>
+                    <table class="tableConsut">
+                        <tr class="tableLine">
+                            <td>Placa</td>
+                            <td>Bloco</td>
+                            <td>Comprovante</td>
+                            <td>Data de Entrada </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            <div class="hidden waveControl"  id="waveControlPage">
+                <div class="waveControl"> 
+                    <div class="cardsContainer" ></div>
+                </div>
+            </div>
         </div>
-
-        <script src="../src/javascript/switchPage.js"></script>
-        <script src="../src/javascript/createDiv.js"></script>
-
+    </div>
+    <script src="../src/javascript/switchPage.js"></script>
+    <script src="../src/javascript/createDiv.js"></script>
+    <script src="../src/javascript/createTable.js"></script>
 </body>
-
 </html>

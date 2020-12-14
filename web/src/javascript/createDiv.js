@@ -1,14 +1,14 @@
 'use strict';
-const listData =[
-    {'title':'BLOCO A'},
-    {'title':'BLOCO B'},
-    {'title':'BLOCO C'},
-    {'title':'BLOCO D'}
+const listVaucher =[
+    {'title':'BLOCO A', 'numberClient':300, 'numberVachuers':300},
+    {'title':'BLOCO B', 'numberClient':300, 'numberVachuers':300},
+    {'title':'BLOCO C', 'numberClient':300, 'numberVachuers':300},
+    {'title':'BLOCO D', 'numberClient':300, 'numberVachuers':300}
 ];
 
 const container = document.querySelector('.cardsContainer');
 
-const createDiv = (title) => {
+const createDiv = (title, numberClient, numberVachuers) => {
     const newDiv = document.createElement('div');
     newDiv.classList.add ('card');
     newDiv.innerHTML = `
@@ -20,7 +20,7 @@ const createDiv = (title) => {
                 <div class="informationBox">
                     <div class="numberClient">
                     <span>
-                        XX
+                        ${numberClient}
                     </span>
                     <span>
                         Clientes
@@ -28,7 +28,7 @@ const createDiv = (title) => {
                     </div>
                     <div class="numberClient">
                         <span>
-                            XX
+                            ${numberVachuers}
                         </span>
                         <span>
                             Vagas
@@ -36,14 +36,16 @@ const createDiv = (title) => {
                     </div>
                 </div>
             </div>
-            
         `;
     return newDiv;
 }
 
-const mostrarDiv = (block) => {
-    container.appendChild ( createDiv(block.title) );
+const showDiv = (block) => {
+    container.appendChild (createDiv(block.title, block.numberClient, block.numberVachuers));
 };
 
-listData.forEach ( mostrarDiv );
+listVaucher.forEach (showDiv);
+
+
+
 

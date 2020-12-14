@@ -1,5 +1,5 @@
 const listTable =[
-    {'placa':'AAAAA'},
+    {'placa':'Lucas'},
     {'placa':'AAAAA'}
 ];
 
@@ -12,9 +12,9 @@ const createTable = (placa) => {
         <table class="tableConsut">
             <tr class="tableLine">
                 <td class="tableLineStyle">${placa}</td>
-                <td class="tableLineStyle">A</td>
                 <td class="tableLineStyle"></td>
-                <td class="tableLineStyle">1</td>
+                <td class="tableLineStyle"></td>
+                <td class="tableLineStyle"></td>
             </tr>
         </table>
         `;

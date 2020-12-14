@@ -1,9 +1,6 @@
 'use strict';
 const listVaucher =[
-    {'title':'BLOCO A', 'numberClient':300, 'numberVachuers':300},
-    {'title':'BLOCO B', 'numberClient':300, 'numberVachuers':300},
-    {'title':'BLOCO C', 'numberClient':300, 'numberVachuers':300},
-    {'title':'BLOCO D', 'numberClient':300, 'numberVachuers':300}
+    {'title':'VAGAS', 'numberClient':300, 'numberVachuers':0},
 ];
 
 const container = document.querySelector('.cardsContainer');

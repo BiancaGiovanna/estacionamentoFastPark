@@ -37,8 +37,10 @@
                 </a>
             </div>
             <div class="iconMenu">
-                    <img src="../src/image/icons/preco_icon.svg" alt="preço">
+                <a href="#" onclick="switch_page(this);" id="tab_price">
+                    <img src="../src/image/icons/preco_icon.svg" alt="vagas">
                     <h3>Preço</h3>
+                </a>
                 </div>
             <div class="iconMenu">
                 <a href="#" onclick="switch_page(this);" id="tab_vacancies">
@@ -115,7 +117,7 @@
                 </div>
             </div>
 
-            <div class="" id="priceControler">
+            <div class="hidden" id="priceControler">
                 <div class="registerPrice">
                     <form action="" method="post">
                         <label>Cadastrar preço</label>

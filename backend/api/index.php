@@ -8,9 +8,8 @@ $app = new \Slim\App();
 $app->get('/', function($request, $response, $args){
     return $response->getBody()->write('Bem vindo a API!!');
 });
-// $app->post('/enter', function ($request, $response, $args){
-    
-// });
+
+//Metodo Get
 $app->get('/enter', function ($request, $response, $args){
     require_once("../model/apiGet.php");
 
@@ -116,5 +115,36 @@ $app->get('/wave', function ($request, $response, $args){
 
 });
 
+//Metodo Post
+$app->post('/enter', function ($request, $response, $args){
+
+    //Recebe o contentType da Requisição
+    $contentType = $request-> getHeaderLine('contentType');
+
+    if($contentType = 'application/json'){
+        $dadosJSON = $request-> getParsedBody();
+
+        if($dadosJSON == "" || $dadosJSON == null){
+            return $response    ->withStatus(400)
+                                ->withHeader('Content-Type', 'application/json')
+                                ->write('{
+                                        "status": "Fail",
+                                        "mensagem": "Os dados enviados não podem ser nulos"
+                                        }');
+        }else{
+            require_once("../model/apiPost.php");
+
+            $retornoDados = insertMovimento($dadosJSON);
+        }
+
+    }else{
+        return $response    ->withStatus(400)
+                            ->withHeader('Content-Type', 'application/json')
+                            ->write('{
+                                    "status": "Fail",
+                                    "Mensagem": "Erro no Content-Type da Requisição"
+                                    }');
+    }
+});
 //carrega todos os endPoints
 $app->run();

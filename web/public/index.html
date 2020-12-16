@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../src/style/partial/menu.css">
-    <link rel="stylesheet" href="../src/style/partial/cms.css">
     <link rel="stylesheet" href="../src/style/main.css">
-    <link rel="shortcut icon" href="../src/image/icons/icon-car.png" type="image/x-icon">
+    <link rel="stylesheet" href="../src/style/partial/cms.css">
+    <link rel="stylesheet" href="../src/style/partial/menuWeb.css">
+    <link rel="stylesheet" href="../src/style/partial/menuMobile.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="../src/image/icons/icon-car.png" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fast Parking</title>
 </head>
-
 <body>
     <header>
-        <img src="../src/image/icons/logo.PNG" alt="">
+        <div class="menu">
+            <input type="checkbox" id="check">
+            <label for="check">
+                <img src="../src/image/icons/iconfinder_menu.svg" alt="menu" id="iconMenu">
+            </label>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_entrance"><h4>Entrada</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_exit"><h4>Saida</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_vacancies"><h4>Preço</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_price"><h4>Relatorio</h4></a></li>
+                </ul>
+            </nav> 
+        </div> 
+        <div class="logo">
+            <img src="../src/image/icons/logo.PNG" alt="logo" id="iconlogo"> 
+        </div>
     </header>
+    
     <div id="contentCenter">
         <div id="menuLateral">
             <!-- <div class="iconMenu">
@@ -62,7 +79,7 @@
 
         <div class="contentPaking">
             
-            <div id="entranceVacancies" class="boxVacancies hidden">
+            <div id="entranceVacancies" class="hidden">
                 <div class="boxVacancies">
                     <form action="">
                         <h2>Preencha o formulário abaixo para cadastrar</h2>
@@ -78,7 +95,7 @@
                 
             </div>
 
-            <div id="exit" class="boxVacancies hidden">
+            <div id="exit" class="hidden">
                 <div class="boxVacancies">
                     <form action="">
                         <h2>Preencha o formulário abaixo para calcular o pagamento </h2>
@@ -97,7 +114,7 @@
                 </div>
 
             </div>
-            <div class="hidden waveControl"  id="waveControlPage">
+            <div class="hidden"  id="waveControlPage">
                 <div class="waveControl"> 
                     <div class="cardsContainer" ></div>
                 </div>
@@ -144,8 +161,7 @@
         </div>
     </div>
 
-
-
+    
     <script src="../src/javascript/switchPage.js"></script>
     <script src="../src/javascript/createDiv.js"></script>
     <script src="../src/javascript/createTable.js"></script>

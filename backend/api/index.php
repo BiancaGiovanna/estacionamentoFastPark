@@ -143,50 +143,54 @@ $app->post('/enter', function ($request, $response, $args){
 });
 
 //Metodo Put
-$app->put('/price', function ($request, $response, $args){
-    $contentType = $request-> getHeaderLine('contentType');
+$app->put('/price/{id}', function ($request, $response, $args){
 
-    //Recebe o contentType da Requisição
-    $contentType = $request-> getHeaderLine('contentType');
+    $id = $args['id'];
+    if($id == 1 || $id == 2){
+        $contentType = $request-> getHeaderLine('contentType');
 
-    if($contentType = 'application/json'){
+        //Recebe o contentType da Requisição
+        $contentType = $request-> getHeaderLine('contentType');
 
-        $dadosJSON = $request-> getParsedBody();
+        if($contentType = 'application/json'){
 
-        if($dadosJSON == "" || $dadosJSON == null){
+            $dadosJSON = $request-> getParsedBody();
+
+                require_once("../model/apiPut.php");
+
+                $retornoDados = updatePrice($dadosJSON);
+
+                if($retornoDados){
+                    return $response    ->withStatus(200)
+                                        ->withHeader('Content-Type', 'application/json')
+                                        ->write('{
+                                                "status": "Sucesso",
+                                                "mensagem": "Dados atualizados com sucesso!"
+                                                }');
+                }else{
+                    return $response    ->withStatus(400)
+                                        ->withHeader('Content-Type', 'application/json')
+                                        ->write('{
+                                                    "status": "Fail",
+                                                    "mensagem": "Falha ao Inserir os dados no Banco. Verifique os dados enviados estão corretos!"
+                                                }');
+                }
+
+        }else{
             return $response    ->withStatus(400)
                                 ->withHeader('Content-Type', 'application/json')
                                 ->write('{
                                         "status": "Fail",
-                                        "mensagem": "Os dados enviados não podem ser nulos"
+                                        "Mensagem": "Erro no Content-Type da Requisição"
                                         }');
-        }else{
-            require_once("../model/apiPost.php");
-
-            $retornoDados = updatePrice($dadosJSON);
-
-            if($retornoDados){
-                return $response    ->withStatus(200)
-                                    ->withHeader('Content-Type', 'application/json')
-                                    ->write($retornoDados);
-            }else{
-                return $response    ->withStatus(400)
-                                    ->withHeader('Content-Type', 'application/json')
-                                    ->write('{
-                                                "status": "Fail",
-                                                "mensagem": "Falha ao Inserir os dados no Banco. Verifique os dados enviados estão corretos!"
-                                            }');
-            }
-
         }
-
     }else{
         return $response    ->withStatus(400)
-                            ->withHeader('Content-Type', 'application/json')
-                            ->write('{
-                                    "status": "Fail",
-                                    "Mensagem": "Erro no Content-Type da Requisição"
-                                    }');
+                                ->withHeader('Content-Type', 'application/json')
+                                ->write('{
+                                        "status": "Fail",
+                                        "Mensagem": "Não existe esta informção no banco!!"
+                                        }');
     }
 
 });

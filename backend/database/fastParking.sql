@@ -6,12 +6,6 @@ create table tblpreco(
     nome varchar(40) not null,
     valor int not null
 );
-select * from tblpreco;
-
-create table tblvaga(
-	idVagas int not null auto_increment primary key,
-    totalVagas int not null
-);
 
 create table tblmovimento(
 	idMovimento int not null auto_increment primary key,
@@ -46,13 +40,29 @@ select tblmovimento.*, tblpreco.nome, tblpreco.valor
 from tblpreco inner join tblmovimento
     on tblmovimento.idPreco = tblpreco.idPreco;
 
+select concat(valor,".00", " R$") as preco, tblmovimento.* from tblpreco inner join;
 
+select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
+            from tblpreco inner join tblmovimento
+            on tblmovimento.idPreco = tblpreco.idPreco;
 
 update tblmovimento set
 idPreco = '1',
 horaSaida = current_timestamp(),
 statusCliente = 0
 where idMovimento = 2;
+
+update tblmovimento set
+idPreco = '1',
+horaSaida = current_timestamp(),
+statusCliente = 0
+where idMovimento = 2;
+
+select * from tblpreco;
+
+update tblpreco set
+valor = '8'
+where idPreco = 1;
 
 /*
 select tblmovimento.* ,tblpreco.* , tblvaga.bloco 
@@ -61,16 +71,6 @@ on tblmovimento.idVagas = tblvaga.idVagas
 inner join tblpreco
 on tblmovimento.idPreco = tblpreco.idPreco;
 
-select tblmovimento.placa, tblmovimento.codComprovante, tblmovimento.dataEntrada, tblmovimento.horaEntrada, tblvaga.bloco 
-	        from tblmovimento inner join tblvaga
-            on tblmovimento.idVagas = tblvaga.idVagas
-            and tblmovimento.statusCliente = 1;
-
-
-select * from tblvaga;
-
-
-#tblpreco, tblmovimento, tblvaga
 insert into tblmovimento values (2, 2,'BEE4R22' ,'2020-12-10', '15:30', '17:30', '2020121015302', 1, 0);
 
 

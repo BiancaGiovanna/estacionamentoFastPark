@@ -6,12 +6,6 @@ create table tblpreco(
     nome varchar(40) not null,
     valor int not null
 );
-select * from tblpreco;
-
-create table tblvaga(
-	idVagas int not null auto_increment primary key,
-    totalVagas int not null
-);
 
 create table tblmovimento(
 	idMovimento int not null auto_increment primary key,
@@ -46,7 +40,11 @@ select tblmovimento.*, tblpreco.nome, tblpreco.valor
 from tblpreco inner join tblmovimento
     on tblmovimento.idPreco = tblpreco.idPreco;
 
+select concat(valor,".00", " R$") as preco, tblmovimento.* from tblpreco inner join;
 
+select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
+            from tblpreco inner join tblmovimento
+            on tblmovimento.idPreco = tblpreco.idPreco;
 
 update tblmovimento set
 idPreco = '1',

@@ -29,6 +29,15 @@ function insertMovimento($dadosMovimento){
                 concat_ws('-', second(curtime()), hour(curtime()), second(curtime()), month(curdate()), minute(curtime()), month(curdate())),
                 '".$statusCliente."'
             )";
+    
+    if(mysqli_query($conex, $sql)){
+        $dados = convertJSON($dadosMovimento);
+        return $dados;
+    }else{
+        return false;
+    }
+    
+
 }
 function convertJSON($obj){
     header("content-type:application/json");

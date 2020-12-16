@@ -75,8 +75,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 #### **Back-end**
 
 * [Composer](https://getcomposer.org) - Framework de construçãp da API
-* [Xampp e PHP 7.2.7](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.2.7/xampp-portable-win32-7.2.7-0-VC15-installer.exe/download) - Download do emulador do servidor WEB no APACHE e PHP
-* [MySQL Workbench 8.0.16](https://downloads.mysql.com/archives/workbench/) - IDE do MySQL ultilizada para criação do banco de dados
+* [Xampp e PHP 7.2.7](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.2.7/xampp-portable-win32-7.2.7-0-VC15-installer.exe/download) - Download do emulador do servidor WEB no APACHE e PHP (Versão de Windows)
+* [MySQL Workbench 8.0.16](https://downloads.mysql.com/archives/workbench/) - IDE do MySQL ultilizada para criação do banco de dados (Versão de Windows)
 
 
 

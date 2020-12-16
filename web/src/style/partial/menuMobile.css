@@ -1,0 +1,64 @@
+.menu{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+}
+.logo{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+}
+header #iconMenu{
+    width: 30px;
+    height: 100px;
+}
+header #iconlogo{
+    width: 150px;
+    height: 65px;
+}
+input[type="checkbox"]{
+    display: none;
+}
+
+nav{
+    background: #115582;
+    width: 250px;
+    height: 100%;   
+    top: 60px;
+    left: -350px;
+    z-index: 999;
+    position: absolute;
+    transition: all .7s;
+}
+input[type="checkbox"]:checked ~ nav{
+    transform: translateX(350px);
+}
+ul{
+    list-style: none;
+    top: 50px;
+    position: absolute;
+    width: 100%;
+}
+a{
+    display:block;
+    padding: 20px 5px;
+    color: #fff;
+}
+h4{
+    color: white;
+}
+label{
+    padding: 15px;
+    position: relative;
+    z-index: 1;   
+}
+
+@media(min-width: 750px){
+    .menu {
+        display:none;
+    }
+}

@@ -2,7 +2,41 @@
 * {
     padding: 0px;
     margin: 0px;
-    box-sizing: border-box;
-    
+    box-sizing: border-box;   
 }
-
+body{
+    font-family: 'Roboto', sans-serif;
+    background: #D8C40A;
+    font-size: 1.6rem;
+}
+a:link, a:visited, a:active{
+    text-decoration: none;
+    color: #242424;
+}
+.hidden{
+    display:none;
+}
+button{
+    position: relative;
+    width: 150px;
+    height: 50px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    color: #D8C40A;
+    background: #115582;
+}
+button:hover{
+    background: #1876b5;
+}
+h1, h2{
+    font-size: 1.6rem;
+    color: #1876b5;
+    height: 50px;
+    margin:10px;
+    padding-top: 5px;
+    padding-left: 10px;
+    letter-spacing: 1px;
+}
+h3{
+    font-size: 1.3rem;
+}

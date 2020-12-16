@@ -1,46 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../src/style/partial/menu.css">
     <link rel="stylesheet" href="../src/style/main.css">
-    <link rel="shortcut icon" href="../src/image/icons/icon-car.png" type="image/x-icon">
+    <link rel="stylesheet" href="../src/style/partial/cms.css">
+    <link rel="stylesheet" href="../src/style/partial/menuWeb.css">
+    <link rel="stylesheet" href="../src/style/partial/menuMobile.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="../src/image/icons/icon-car.png" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fast Parking</title>
 </head>
-
 <body>
     <header>
-        <img src="../src/image/icons/logo.PNG" alt="">
+        <div class="menu">
+            <input type="checkbox" id="check">
+            <label for="check">
+                <img src="../src/image/icons/iconfinder_menu.svg" alt="menu" id="iconMenu">
+            </label>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_entrance"><h4>Entrada</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_exit"><h4>Saida</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_vacancies"><h4>Preço</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_price"><h4>Relatorio</h4></a></li>
+                </ul>
+            </nav> 
+        </div> 
+        <div class="logo">
+            <img src="../src/image/icons/logo.PNG" alt="logo" id="iconlogo"> 
+        </div>
     </header>
-    <div id="menuLateral">
-        <div class="iconMenu">
-            <img src="../src/image/icons/home_icon.svg" alt="home">
-            <h3>Home</h3>
+    
+    <div id="contentCenter">
+        <div id="menuLateral">
+            <!-- <div class="iconMenu">
+                <a href="#">
+                <img src="../src/image/icons/home_icon.svg" alt="home">
+                <h3>Home</h3>
+            </a>
+            </div> -->
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_entrance">
+                    <img src="../src/image/icons/entrada_icon.svg" alt="entrada">
+                    <h3>Entrada</h3>
+                </a>
+            </div>
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_exit">
+                    <img src="../src/image/icons/saida_icon.svg" alt="saida">
+                    <h3>Saída</h3>
+                </a>
+            </div>
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_price">
+                    <img src="../src/image/icons/preco_icon.svg" alt="vagas">
+                    <h3>Preço</h3>
+                </a>
+                </div>
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_vacancies">
+                    <img src="../src/image/icons/vagas_icon.svg" alt="vagas">
+                    <h3>Vagas</h3>
+                </a>
+            </div>
+            <div class="iconMenu">
+                <a href="#" onclick="switch_page(this);" id="tab_client">
+                    <img src="../src/image/icons/user_icon.svg" alt="User">
+                    <h3>Clientes</h3>
+                </a>
+            </div>
+            <div class="iconMenu">
+                <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
+                <h3>Relatorio</h3>
+            </div>
         </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/entrada_icon.svg" alt="entrada">
-            <h3>Entrada</h3>
-        </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/saida_icon.svg" alt="saida">
-            <h3>Saída</h3>
-        </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/preco_icon.svg" alt="preço">
-            <h3>Preço</h3>
-        </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/vagas_icon.svg" alt="vagas">
-            <h3>Vagas</h3>
-        </div>
-        <div class="iconMenu">
-            <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
-            <h3>Relatorio</h3>
+
+        <div class="contentPaking">
+            
+            <div id="entranceVacancies" class="hidden">
+                <div class="boxVacancies">
+                    <form action="">
+                        <h2>Preencha o formulário abaixo para cadastrar</h2>
+                        <div class="contentInpunt">
+                            <div class="boxInputStyle">
+                                <label>Placa do Carro *</label>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <button>Cadastrar</button>
+                    </form>
+                </div>
+                
+            </div>
+
+            <div id="exit" class="hidden">
+                <div class="boxVacancies">
+                    <form action="">
+                        <h2>Preencha o formulário abaixo para calcular o pagamento </h2>
+                        <div class="contentInpunt">
+                            <div class="boxInputStyle">
+                                <label>Placa do Carro *</label>
+                                <input type="text">
+                            </div>
+                            <div class="boxInputStyle">
+                                <label>Codigo de Entrada *</label>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <button>Cobrar</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="hidden"  id="waveControlPage">
+                <div class="waveControl"> 
+                    <div class="cardsContainer" ></div>
+                </div>
+            </div>
+            <div class="hidden" id="tableControl">
+                <div class="tableControl">
+                    <h2>Clientes</h2>
+                    <table class="tableConsut">
+                        <tr class="tableLine">
+                            <td>Placa</td>
+                            <td>Comprovante</td>
+                            <td>Data e hora de Entrada </td>
+                            <td>Data e hora de saida</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+
+            <div class="hidden" id="priceControler">
+                <div class="registerPrice">
+                    <form action="" method="post">
+                        <label>Cadastrar preço</label>
+                        <input type="text" name="" id="" placeholder="Valor em R$ 0,00"/>
+                        <button>Cadastrar</button>
+                    </form>
+                </div>
+                <div class="priceManagement">
+                    <h2>Gerenciamento de preço</h2>
+                    <table class="tablePriceManageme">
+                        <tr>
+                            <td class="tableLineStyle">Hora</td>
+                            <td class="tableLineStyle">Valor</td>
+                            <td class="tableLineStyle">Opção</td>
+                        </tr>
+                        <tr>
+                            <td class="tableLineStyle">1</td>
+                            <td class="tableLineStyle">1</td>
+                            <td class="tableLineStyle">1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-</body>
 
+    
+    <script src="../src/javascript/switchPage.js"></script>
+    <script src="../src/javascript/createDiv.js"></script>
+    <script src="../src/javascript/createTable.js"></script>
+</body>
 </html>

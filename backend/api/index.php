@@ -146,35 +146,20 @@ $app->post('/enter', function ($request, $response, $args){
 $app->put('/price/{id}', function ($request, $response, $args){
 
     $id = $args['id'];
-    if($id == 1 || $id == 2){
-        $contentType = $request-> getHeaderLine('contentType');
+    $valor = $args['valor'];
 
-        //Recebe o contentType da Requisição
-        $contentType = $request-> getHeaderLine('contentType');
+    $contentType = $request-> getHeaderLine('contentType');
+
+    if($id == 1 || $id == 2){
 
         if($contentType = 'application/json'){
-
-            $dadosJSON = $request-> getParsedBody();
-
                 require_once("../model/apiPut.php");
 
-                $retornoDados = updatePrice($dadosJSON);
+                $retornoDados = updatePrice($id, $valor);
 
-                if($retornoDados){
-                    return $response    ->withStatus(200)
-                                        ->withHeader('Content-Type', 'application/json')
-                                        ->write('{
-                                                "status": "Sucesso",
-                                                "mensagem": "Dados atualizados com sucesso!"
-                                                }');
-                }else{
-                    return $response    ->withStatus(400)
-                                        ->withHeader('Content-Type', 'application/json')
-                                        ->write('{
-                                                    "status": "Fail",
-                                                    "mensagem": "Falha ao Inserir os dados no Banco. Verifique os dados enviados estão corretos!"
-                                                }');
-                }
+            echo($retornoDados);
+            die;
+
 
         }else{
             return $response    ->withStatus(400)

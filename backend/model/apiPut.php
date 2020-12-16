@@ -1,5 +1,5 @@
 <?php
-function updatePrice($dadosPreco){
+function updatePrice($id, $valor){
     require_once('../controller/connectionMysql.php');
 
     require_once('../controller/settings.php');
@@ -7,10 +7,6 @@ function updatePrice($dadosPreco){
     if(!$conex = connectionMysql()){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
-
-    $valor = (integer) null;
-
-    $valor = $dadosPreco['valor'];
 
     if($id == 1){
         $sql = "update tblpreco set

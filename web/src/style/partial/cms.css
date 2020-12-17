@@ -1,44 +1,157 @@
-header {
-    width: 100%;
-    height: 60px;
-    background: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-}
-
-.boxVacancies{
-    width: 300px;
-    height: 500px;
-    margin-bottom: 20px;
-    background:#fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-}
-.boxVacancies button{
-    left: 50px;
-    bottom: -50px;
-}
-.contentInpunt{
-    width: 100%;
-    height: 150px;
+ @media(max-width: 719px){
+    button{
+        position: relative;
+        width: 100px;
+        height: 50px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        color: #D8C40A;
+        background: #115582;
+    }
+    header {
+        width: 100%;
+        height: 60px;
+        background: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+    }
+    h1, h2{
+        font-size: 1.1rem;
+    }
+    .contentPaking{
+        width: 100%;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding:10px 0px;
+    }
+    .boxVacancies{
+        width: 300px;
+        height: 475px;
+        background:#fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+    .boxVacancies button{
+        left: 75px;
+        bottom: -50px;
+    }
+    .contentInpunt{
+        width: 100%;
+        height: 150px;
+        display: flex;
+       flex-direction: column;
+    }
+    .boxInputStyle{
+        width: 300px;
+        height: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
     
-    display: flex;
-    justify-content: space-evenly;
+    label{
+        font-size: .9rem;
+        color: #115582;
+    }
+    input[type="text"],
+    select{
+        width: 250px;
+        height: 50px;
+        font-size: 1.4rem;
+        border: 2px solid #115582;
+        padding-left: 5px;
+        border-radius: 10px;
+    
+    }
+    
+    .waveControl{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cardsContainer{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+    .cardControlWave{
+        width: 100%; 
+        height: 250px;
+        background:#fff;
+        border-radius: 10px;
+        margin: 10px 0px;   
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .imageCard{
+        width: 75px;
+        height: 75px;
+        margin-bottom: 15px;
+        background:#115582;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .imageCard img{
+        width: 75%;
+        height: 75%;
+    }
+    
+    .informationBox{
+        width: 250px;
+        height: 75px;
+        display: flex;
+        justify-content:space-around;
+        align-items:center;
+    }
+    .numberClient{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction: column;
+        font-weight: 300;
+        width: 100px;
+        height: 75px;
+        border-radius: 10px;
+        background:#115582;
+        color: #D8C40A;
+    }
+    .registerPrice{
+        border-radius: 20px;
+        width: 300px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        margin-bottom: 15px;
+        background: #ffffff;
+    }
+    .registerPrice input{
+        margin-left: 30px;
+    }
+    .registerPrice button{
+        top: 30px;
+        left: 100px;
+    }
 }
-.boxInputStyle{
-    width: 300px;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-@media(min-width: 750px){
+@media(min-width: 720px){
     header {
         width: 100vw;
         height: 10vh;
@@ -58,17 +171,16 @@ header {
     }
     .contentPaking{
         width: 100%;
-        height: 800px;
+        height: 500px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        justify-content: center;        
         padding:10px 0px;
         margin: 10px;
+        border: 2px solid #115582;
     }
     .boxVacancies{
-        width: 1150px;
-        height: 500px;
+        width: 575px;
+        height: 450px;
         margin-bottom: 20px;
         background:#fff;
         display: flex;
@@ -78,15 +190,14 @@ header {
         border-radius: 50px;
     }
     .boxVacancies button{
-        left: 600px;
+        left: 75px;
         bottom: -50px;
     }
     .contentInpunt{
         width: 100%;
         height: 150px;
-        
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
     .boxInputStyle{
         width: 300px;
@@ -150,16 +261,18 @@ header {
     }
     .cardsContainer{
         width: 600px;
-        height: 50%;
-        display: flex;
-        justify-content:center;
-        align-items: center;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1rem;
     }
     .cardControlWave{
-        width: 650px; 
-        height: 450px;
+        width: 100%; 
+        height: 100%;
         background:#fff;
         border-radius: 10px;
+        color: #D8C40A;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -178,7 +291,7 @@ header {
     .imageCard img{
         width: 75%;
         height: 75%;
-    }
+    }   
     
     .informationBox{
         width: 250px;
@@ -201,8 +314,8 @@ header {
     }
     .registerPrice{
         border-radius: 20px;
-        width: 1200px;
-        height: 150px;
+        width: 600px;
+        height: 450px;
         display: flex;
         justify-content:center;
         align-items: center;
@@ -210,22 +323,7 @@ header {
         background: #ffffff;
     }
     .registerPrice button{
-        top: 30px;
-        left: 150px;
+        top: 50px;
+        left: 0px;
     }
-    .priceManagement{
-        width: 1200px;
-        min-height: 500px;
-        height: auto;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        background: #ffffff;
-    
-    }
-    /* .tablePriceManageme{
-        /* overflow-x: hidden;
-        overflow-y: scroll; 
-    } */
 }

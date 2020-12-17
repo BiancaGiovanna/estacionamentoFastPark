@@ -23,8 +23,10 @@
                 <ul>
                     <li><a href="#" onclick="switch_page(this);" id="tab_entrance"><h4>Entrada</h4></a></li>
                     <li><a href="#" onclick="switch_page(this);" id="tab_exit"><h4>Saida</h4></a></li>
-                    <li><a href="#" onclick="switch_page(this);" id="tab_vacancies"><h4>Preço</h4></a></li>
-                    <li><a href="#" onclick="switch_page(this);" id="tab_price"><h4>Relatorio</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_price"><h4>Preço</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_vacancies"><h4>Vagas</h4></a></li>
+                    <li><a href="#" onclick="switch_page(this);" id="tab_report"><h4>Relatorio</h4></a></li>
+
                 </ul>
             </nav> 
         </div> 
@@ -72,8 +74,10 @@
                 </a>
             </div>
             <div class="iconMenu">
-                <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
-                <h3>Relatorio</h3>
+                <a href="#" onclick="switch_page(this);" id="tab_report">
+                    <img src="../src/image/icons/relatorio_icon.svg" alt="relatorio">
+                    <h3>Relatorio</h3>
+                </a>
             </div>
         </div>
 
@@ -81,8 +85,8 @@
             
             <div id="entranceVacancies" class="hidden">
                 <div class="boxVacancies">
+                    <h2>Preencha o formulário abaixo para cadastrar</h2>
                     <form action="">
-                        <h2>Preencha o formulário abaixo para cadastrar</h2>
                         <div class="contentInpunt">
                             <div class="boxInputStyle">
                                 <label>Placa do Carro *</label>
@@ -137,12 +141,15 @@
             <div class="hidden" id="priceControler">
                 <div class="registerPrice">
                     <form action="" method="post">
-                        <label>Cadastrar preço</label>
+                        <h2>Valor da primeira Hora</h2>
                         <input type="text" name="" id="" placeholder="Valor em R$ 0,00"/>
-                        <button>Cadastrar</button>
+                        
+                        <h2>Valor das Demais horas</h2>
+                        <input type="text" name="" id="" placeholder="Valor em R$ 0,00"/>
+                        <button>Atualizar</button>
                     </form>
                 </div>
-                <div class="priceManagement">
+                <!-- <div class="priceManagement">
                     <h2>Gerenciamento de preço</h2>
                     <table class="tablePriceManageme">
                         <tr>
@@ -156,7 +163,10 @@
                             <td class="tableLineStyle">1</td>
                         </tr>
                     </table>
-                </div>
+                </div> -->
+            </div>
+            <div class="hidden" id="report">
+                
             </div>
         </div>
     </div>

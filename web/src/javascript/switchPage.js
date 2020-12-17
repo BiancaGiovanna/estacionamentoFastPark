@@ -5,6 +5,8 @@ function switch_page(obj) {
     document.getElementById('waveControlPage').style.display="none";
     document.getElementById('tableControl').style.display="none";
     document.getElementById('priceControler').style.display="none";
+    document.getElementById('report').style.display="none";
+
 
   switch (obj.id) {
      case 'tab_entrance':
@@ -22,5 +24,9 @@ function switch_page(obj) {
      case 'tab_price':
      document.getElementById('priceControler').style.display="block";
      break
+     case 'tab_report':
+     document.getElementById('report').style.display="block";
+     break
+     
   }
 }

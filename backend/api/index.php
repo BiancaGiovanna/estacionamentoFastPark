@@ -144,38 +144,81 @@ $app->post('/enter', function ($request, $response, $args){
 
 //Metodo Put
 $app->put('/price/{id}', function ($request, $response, $args){
-
-    $id = $args['id'];
-    $valor = $args['valor'];
-
     $contentType = $request-> getHeaderLine('contentType');
 
-    if($id == 1 || $id == 2){
+    $id = $args['id'];
+    $preco = $request->getParsedBody()['valor'];
 
-        if($contentType = 'application/json'){
-                require_once("../model/apiPut.php");
+    if($contentType = 'application/json'){
 
-                $retornoDados = updatePrice($id, $valor);
 
-            echo($retornoDados);
-            die;
+        if($id == 1 || $id == 2){
+            require_once("../model/apiPut.php");
 
+            $retornoDados = updatePrice($id, $preco);
+
+            if($retornoDados){
+                return $response    ->withStatus(200)
+                                    ->withHeader('Content-Type', 'application/json')
+                                    ->write('{
+                                            "status": "Sucesso"
+                                            "Mensagem": "Dados Atualizados com Sucesso!"
+                                            }');
+            }else{
+                return $response    ->withStatus(400)
+                                    ->withHeader('Content-Type', 'application/json')
+                                    ->write('{
+                                        "status": "Fail",
+                                        "mensagem": "Os dados enviados não podem ser nulos"
+                                            }');
+            }
 
         }else{
             return $response    ->withStatus(400)
-                                ->withHeader('Content-Type', 'application/json')
-                                ->write('{
-                                        "status": "Fail",
-                                        "Mensagem": "Erro no Content-Type da Requisição"
-                                        }');
+                                    ->withHeader('Content-Type', 'application/json')
+                                    ->write('{
+                                            "status": "Fail",
+                                            "Mensagem": "Não existe esta informção no banco!!"
+                                            }');
         }
+
     }else{
         return $response    ->withStatus(400)
-                                ->withHeader('Content-Type', 'application/json')
-                                ->write('{
-                                        "status": "Fail",
-                                        "Mensagem": "Não existe esta informção no banco!!"
-                                        }');
+                            ->withHeader('Content-Type', 'application/json')
+                            ->write('{
+                                    "status": "Fail",
+                                    "Mensagem": "Erro no Content-Type da Requisição"
+                                    }');
+    }
+
+});
+
+//Vinicius: So falta esse End-Point
+$app->put('/exit/{codigo}', function ($request, $response, $args){
+
+    $codComprovante = $args['codComprovante'];
+    $idPreco = $request->getParsedBody()['idPreco'];
+
+    $contentType = $request-> getHeaderLine('contentType');
+
+    require_once("../model/apiPut.php");
+
+    $retornoDados = updateExit($codComprovante, $idPreco);
+
+    if($retornoDados){
+        return $response    ->withStatus(200)
+                            ->withHeader('Content-Type', 'application/json')
+                            ->write('{
+                                    "status": "Sucesso"
+                                    "Mensagem": "Dados Atualizados com Sucesso!"
+                                    }');
+    }else{
+        return $response    ->withStatus(400)
+                            ->withHeader('Content-Type', 'application/json')
+                            ->write('{
+                                "status": "Fail",
+                                "mensagem": "Os dados enviados não podem ser nulos"
+                                    }');
     }
 
 });

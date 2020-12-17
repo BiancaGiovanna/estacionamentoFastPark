@@ -83,7 +83,14 @@ function searchDate($dataEntrada){
 
     $sql = 'select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
             from tblpreco inner join tblmovimento
-            on tblmovimento.idPreco = tblpreco.idPreco;';
+            on tblmovimento.idPreco = tblpreco.idPreco';
+
+            // 'select * from tblmovimento
+            // where idPreco <> ""
+            // and statusCliente = 0
+            // and year(horaSaida) = 2020
+            // and month(horaSaida) = 12
+            // and day(horaSaida) = 14';
 
     $select = mysqli_query($conex, $sql);
 

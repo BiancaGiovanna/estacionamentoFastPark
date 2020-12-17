@@ -152,6 +152,9 @@
     }
 }
 @media(min-width: 720px){
+    h1, h2{
+        font-size: 1.2rem;
+    }
     header {
         width: 100vw;
         height: 10vh;
@@ -171,12 +174,12 @@
     }
     .contentPaking{
         width: 100%;
-        height: 500px;
+        height: 550px;
         display: flex;
         justify-content: center;        
         padding:10px 0px;
         margin: 10px;
-        border: 2px solid #115582;
+        /* border: 2px solid #115582; */
     }
     .boxVacancies{
         width: 575px;
@@ -192,6 +195,9 @@
     .boxVacancies button{
         left: 75px;
         bottom: -50px;
+    }
+    #cobrar {
+        left: 200px;
     }
     .contentInpunt{
         width: 100%;
@@ -222,8 +228,8 @@
     
     }
     .tableControl{
-        width: 1200px;
-        min-height:500px;
+        width: 600px;
+        min-height: 500px;
         height: auto;
         display: flex;
         border-radius: 20px;
@@ -234,7 +240,7 @@
         background:#fff;
     }
     table{
-        width: 900px;
+        width: 600px;
         height: 100px;
         text-align: center;
     }
@@ -254,22 +260,21 @@
     }
     .waveControl{
         width: 100%;
-        height: 100%;
+        height: 500px;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center;        
     }
     .cardsContainer{
-        width: 600px;
-        height: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: auto;
-        grid-gap: 1rem;
+        width: 400px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .cardControlWave{
-        width: 100%; 
-        height: 100%;
+        width: 300px; 
+        height: 300px;
         background:#fff;
         border-radius: 10px;
         color: #D8C40A;
@@ -314,16 +319,14 @@
     }
     .registerPrice{
         border-radius: 20px;
-        width: 600px;
-        height: 450px;
+        width: 500px;
+        height: 400px;
         display: flex;
         justify-content:center;
-        align-items: center;
-        margin-bottom: 15px;
         background: #ffffff;
     }
     .registerPrice button{
-        top: 50px;
-        left: 0px;
+        top: 75px;
+        right:  200px;
     }
 }

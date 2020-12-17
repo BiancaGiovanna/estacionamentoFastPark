@@ -1,8 +1,5 @@
 'use strict';
 const listVaucher =[
-    {'title':'VAGAS', 'numberClient':300, 'numberVachuers':0},
-    {'title':'VAGAS', 'numberClient':300, 'numberVachuers':0},
-    {'title':'VAGAS', 'numberClient':300, 'numberVachuers':0},
     {'title':'VAGAS', 'numberClient':300, 'numberVachuers':0}
 ];
 

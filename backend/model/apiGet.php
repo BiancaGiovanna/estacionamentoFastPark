@@ -153,6 +153,43 @@ function searchPrice($valor){
         return false;
 
 }
+function searchWave($vagas){
+    require_once('../controller/connectionMysql.php');
+
+    require_once('../controller/settings.php');
+
+    if(!$conex = connectionMysql()){
+        echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
+    }
+
+    $sql = 'select * FROM tblmovimento
+            where statusCliente = 1';
+            //COUNT(*)
+
+    $select = mysqli_query($conex, $sql);
+
+    while($rsMovimento = mysqli_fetch_assoc($select)){
+        $date[] =  array(
+            "placa"             => $rsMovimento['placa'],
+            "data"              => $rsMovimento['dataEntrada'],
+            "codComprovante"    => $rsMovimento['codComprovante'],
+            "statusCliente"     => $rsMovimento['statusCliente']
+        );
+    }
+
+    //convertendo para JSON
+    if(isset($date))
+        $listDateJSON = convertJSON($date);
+    else
+        return false;
+
+    //vendo se a variavel existe
+    if(isset($listDateJSON))
+        return $listDateJSON;
+    else
+        return false;
+
+}
 function convertJSON($obj){
     header("content-type:application/json");
 

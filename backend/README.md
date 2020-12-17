@@ -19,15 +19,18 @@ diretorio para acessar a API:
 
 #Saida
     ' ../backend/api/index.php/exit ';
-""
+"End-Point que vai retornar todos os dados da Saida do Sistema"
 
 #Preço
     ' ../backend/api/index.php/price ';
+"End-Point que vai retornar todos os Precos que estão Salvos no banco"
 
 #vagas
     ' ../backend/api/index.php/wave ';
+""
 
 #Relatorio
     ' ../backend/api/index.php/report ';
+"End-Point que retorna todos os dados "
 
 

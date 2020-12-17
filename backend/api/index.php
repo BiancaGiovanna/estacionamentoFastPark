@@ -72,6 +72,27 @@ $app->get('/report', function ($request, $response, $args){
                             ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
 
 });
+$app->get('/wave', function ($request, $response, $args){
+    require_once("../model/apiGet.php");
+
+    if(isset($request -> getQueryParams()['statusCliente'])){
+
+        $vagas = $request-> getQueryParams()['statusCliente'];
+
+        $listDate = searchWave($vagas);
+    }else{
+        $listDate = searchWave(0);
+    }
+
+    if($listDate)
+        return $response    ->withStatus(200)
+                            ->withHeader('Content-Type', 'application/json')
+                            ->write($listDate);
+    else
+        return $response    ->withStatus(204)
+                            ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
+
+});
 $app->get('/price', function ($request, $response, $args){
     require_once("../model/apiGet.php");
 
@@ -193,7 +214,6 @@ $app->put('/price/{id}', function ($request, $response, $args){
 
 });
 
-//Vinicius: So falta esse End-Point
 $app->put('/exit/{codigo}', function ($request, $response, $args){
 
     $codComprovante = $args['codComprovante'];

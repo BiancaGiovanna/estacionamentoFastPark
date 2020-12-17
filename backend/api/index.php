@@ -93,27 +93,7 @@ $app->get('/price', function ($request, $response, $args){
                             ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
 
 });
-$app->get('/wave', function ($request, $response, $args){
-    require_once("../model/apiGet.php");
 
-    if(isset($request -> getQueryParams()['totalVagas'])){
-
-        $vagas = $request-> getQueryParams()['totalVagas'];
-
-        $listDate = searchWave($vagas);
-    }else{
-        $listDate = searchWave(0);
-    }
-
-    if($listDate)
-        return $response    ->withStatus(200)
-                            ->withHeader('Content-Type', 'application/json')
-                            ->write($listDate);
-    else
-        return $response    ->withStatus(204)
-                            ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
-
-});
 
 //Metodo Post
 $app->post('/enter', function ($request, $response, $args){
@@ -122,6 +102,7 @@ $app->post('/enter', function ($request, $response, $args){
     $contentType = $request-> getHeaderLine('contentType');
 
     if($contentType = 'application/json'){
+
         $dadosJSON = $request-> getParsedBody();
 
         if($dadosJSON == "" || $dadosJSON == null){
@@ -135,6 +116,20 @@ $app->post('/enter', function ($request, $response, $args){
             require_once("../model/apiPost.php");
 
             $retornoDados = insertMovimento($dadosJSON);
+
+            if($retornoDados){
+                return $response    ->withStatus(200)
+                                    ->withHeader('Content-Type', 'application/json')
+                                    ->write($retornoDados);
+            }else{
+                return $response    ->withStatus(400)
+                                    ->withHeader('Content-Type', 'application/json')
+                                    ->write('{
+                                                "status": "Fail",
+                                                "mensagem": "Falha ao Inserir os dados no Banco. Verifique os dados enviados estão corretos!"
+                                            }');
+            }
+
         }
 
     }else{
@@ -146,5 +141,44 @@ $app->post('/enter', function ($request, $response, $args){
                                     }');
     }
 });
+
+//Metodo Put
+$app->put('/price/{id}', function ($request, $response, $args){
+
+    $id = $args['id'];
+    $valor = $args['valor'];
+
+    $contentType = $request-> getHeaderLine('contentType');
+
+    if($id == 1 || $id == 2){
+
+        if($contentType = 'application/json'){
+                require_once("../model/apiPut.php");
+
+                $retornoDados = updatePrice($id, $valor);
+
+            echo($retornoDados);
+            die;
+
+
+        }else{
+            return $response    ->withStatus(400)
+                                ->withHeader('Content-Type', 'application/json')
+                                ->write('{
+                                        "status": "Fail",
+                                        "Mensagem": "Erro no Content-Type da Requisição"
+                                        }');
+        }
+    }else{
+        return $response    ->withStatus(400)
+                                ->withHeader('Content-Type', 'application/json')
+                                ->write('{
+                                        "status": "Fail",
+                                        "Mensagem": "Não existe esta informção no banco!!"
+                                        }');
+    }
+
+});
+
 //carrega todos os endPoints
 $app->run();

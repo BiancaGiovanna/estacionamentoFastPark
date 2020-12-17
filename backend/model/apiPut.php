@@ -1,5 +1,5 @@
 <?php
-function updatePrice($id, $valor){
+function updatePrice($id, $preco){
     require_once('../controller/connectionMysql.php');
 
     require_once('../controller/settings.php');
@@ -8,19 +8,9 @@ function updatePrice($id, $valor){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
 
-    if($id == 1){
-        $sql = "update tblpreco set
-            valor = '".$valor."'
-            where idPreco = 1";
-    }else if($id == 2){
-        $sql = "update tblpreco set
-            valor = '".$valor."'
-            where idPreco = 2";
-    }
-    else{
-        return false;
-    }
-    
+    $sql = "update tblpreco set
+            valor = '".$preco."'
+            where idPreco = ".$id;
     
     if (mysqli_query($conex, $sql)){
         return true;
@@ -29,6 +19,30 @@ function updatePrice($id, $valor){
         return false;
     }
 
+}
+function updateExit($codComprovante, $idPreco){
+    require_once('../controller/connectionMysql.php');
+
+    require_once('../controller/settings.php');
+
+    if(!$conex = connectionMysql()){
+        echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
+    }
+
+    $sql = "select hour(timediff((select tblmovimento.dataEntrada from tblmovimento where codComprovante = '3-13-3-12-39-12'), current_timestamp()));
+            select * from tblpreco;
+            update tblmovimento set
+            idPreço = '".$idPreco."',
+            horaSaida = current_timestamp(),
+            statusCliente = 0
+            where codComprovante = ".$codComprovante;
+
+    if (mysqli_query($conex, $sql)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 function convertJSON($obj){
     header("content-type:application/json");

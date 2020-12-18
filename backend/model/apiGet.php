@@ -43,9 +43,8 @@ function searchExit($dataEntrada){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
 
-    $sql = 'select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
-            from tblpreco inner join tblmovimento
-            on tblmovimento.idPreco = tblpreco.idPreco';
+    $sql = 'select tblmovimento.*, concat(preco,".00", " R$") as valor
+            from tblmovimento';
 
     $select = mysqli_query($conex, $sql);
 
@@ -70,7 +69,7 @@ function searchExit($dataEntrada){
         return $listDateJSON;
     else
         return false;
-    
+
 }
 function searchDate($dataEntrada){
     require_once('../controller/connectionMysql.php');
@@ -81,16 +80,8 @@ function searchDate($dataEntrada){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
 
-    $sql = 'select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
-            from tblpreco inner join tblmovimento
-            on tblmovimento.idPreco = tblpreco.idPreco';
-
-            // 'select * from tblmovimento
-            // where idPreco <> ""
-            // and statusCliente = 0
-            // and year(horaSaida) = 2020
-            // and month(horaSaida) = 12
-            // and day(horaSaida) = 14';
+    $sql = 'select tblmovimento.*, concat(preco,".00", " R$") as valor
+            from tblmovimento';
 
     $select = mysqli_query($conex, $sql);
 
@@ -137,6 +128,41 @@ function searchPrice($valor){
             "idPreco"           => $rsMovimento['idPreco'],
             "Nome"              => $rsMovimento['nome'],
             "valor"             => $rsMovimento['valor']
+        );
+    }
+
+    //convertendo para JSON
+    if(isset($date))
+        $listDateJSON = convertJSON($date);
+    else
+        return false;
+
+    //vendo se a variavel existe
+    if(isset($listDateJSON))
+        return $listDateJSON;
+    else
+        return false;
+
+}
+function searchWave($vagas){
+    require_once('../controller/connectionMysql.php');
+
+    require_once('../controller/settings.php');
+
+    if(!$conex = connectionMysql()){
+        echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
+    }
+
+    $sql = 'select COUNT(*) FROM tblmovimento
+            where statusCliente = 1';
+            //
+
+    $select = mysqli_query($conex, $sql);
+
+    while($rsMovimento = mysqli_fetch_assoc($select)){
+        $date[] =  array(
+            
+            "clientes ativos"             => $rsMovimento['COUNT(*)']
         );
     }
 

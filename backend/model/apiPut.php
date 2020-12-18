@@ -29,13 +29,41 @@ function updateExit($codComprovante, $idPreco){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
 
-    $sql = "select hour(timediff((select tblmovimento.dataEntrada from tblmovimento where codComprovante = '3-13-3-12-39-12'), current_timestamp()));
-            select * from tblpreco;
-            update tblmovimento set
-            idPreço = '".$idPreco."',
-            horaSaida = current_timestamp(),
-            statusCliente = 0
-            where codComprovante = ".$codComprovante;
+    $sqlHoras = "select hour(timediff((select tblmovimento.dataEntrada from tblmovimento 
+            where codComprovante = '".$codComprovante."'), current_timestamp()));";
+    
+    $selectHoras = mysqli_query($conex, $sqlHoras);
+
+    $sqlPreco_1 = " select tblpreco.valor
+                    from tblpreco
+                    where idPreco = 1";
+    
+    $selectPreco_1 = mysqli_query($conex, $sqlPreco_1);
+
+    $sqlPreco_2 = " select tblpreco.valor
+                    from tblpreco
+                    where idPreco = 2";
+
+    $selectPreco_2 = mysqli_query($conex, $sqlPreco_2);
+
+    if ($sqlHoras < 1) {
+        $sql =  "
+                update tblmovimento set
+                preco = '".$selectPreco_1."',
+                horaSaida = current_timestamp(),
+                statusCliente = 0
+                where codComprovante = ".$codComprovante;
+    }
+    else{
+        $valor = ($selectHoras - 1) * $selectPreco_2 + $selectPreco_2;
+        $sql =  "
+                update tblmovimento set
+                preco = '".$valor."',
+                horaSaida = current_timestamp(),
+                statusCliente = 0
+                where codComprovante = ".$codComprovante;
+    }
+
 
     if (mysqli_query($conex, $sql)){
         return true;

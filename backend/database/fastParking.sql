@@ -9,16 +9,16 @@ create table tblpreco(
 
 create table tblmovimento(
 	idMovimento int not null auto_increment primary key,
-    idPreco int,
+    preco int,
     placa varchar(8) not null,
     dataEntrada datetime not null,
     horaSaida datetime,
     codComprovante text,
-    statusCliente boolean,
-    constraint Fk_movimento_preco
-    foreign key(idPreco)
-    references tblpreco(idPreco)
+    statusCliente boolean
 );
+/*
+select count(*) as total FROM tblmovimento
+where statusCliente = 1;
 
 insert into tblmovimento
 	(
@@ -28,11 +28,12 @@ insert into tblmovimento
     statusCliente
     ) values 
     (
-		'ABC-4321',
+		'AAA-3322',
         current_timestamp(),
         concat_ws('-', second(curtime()), hour(curtime()), second(curtime()), month(curdate()), minute(curtime()), month(curdate())),
         1
     );
+
 
 select * from tblmovimento;
 
@@ -40,23 +41,18 @@ select tblmovimento.*, tblpreco.nome, tblpreco.valor
 from tblpreco inner join tblmovimento
     on tblmovimento.idPreco = tblpreco.idPreco;
 
-select concat(valor,".00", " R$") as preco, tblmovimento.* from tblpreco inner join;
+select tblmovimento.*, concat(preco,".00", " R$") as valor
+from tblmovimento;
 
 select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
             from tblpreco inner join tblmovimento
             on tblmovimento.idPreco = tblpreco.idPreco;
 
 update tblmovimento set
-idPreco = '1',
+preco = 8,
 horaSaida = current_timestamp(),
 statusCliente = 0
-where idMovimento = 2;
-
-update tblmovimento set
-idPreco = '1',
-horaSaida = current_timestamp(),
-statusCliente = 0
-where idMovimento = 2;
+where idMovimento = 3;
 
 select * from tblpreco;
 
@@ -64,6 +60,8 @@ update tblpreco set
 valor = '8'
 where idPreco = 1;
 
+insert into tblpreco (nome, valor)
+values ('one hour', '8'),('other hour', '4');
 /*
 select tblmovimento.* ,tblpreco.* , tblvaga.bloco 
 from tblvaga inner join tblmovimento

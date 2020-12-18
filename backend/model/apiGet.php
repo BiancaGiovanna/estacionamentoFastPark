@@ -43,9 +43,8 @@ function searchExit($dataEntrada){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
 
-    $sql = 'select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
-            from tblpreco inner join tblmovimento
-            on tblmovimento.idPreco = tblpreco.idPreco';
+    $sql = 'select tblmovimento.*, concat(preco,".00", " R$") as valor
+            from tblmovimento';
 
     $select = mysqli_query($conex, $sql);
 
@@ -70,7 +69,7 @@ function searchExit($dataEntrada){
         return $listDateJSON;
     else
         return false;
-    
+
 }
 function searchDate($dataEntrada){
     require_once('../controller/connectionMysql.php');
@@ -81,16 +80,8 @@ function searchDate($dataEntrada){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
 
-    $sql = 'select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
-            from tblpreco inner join tblmovimento
-            on tblmovimento.idPreco = tblpreco.idPreco';
-
-            // 'select * from tblmovimento
-            // where idPreco <> ""
-            // and statusCliente = 0
-            // and year(horaSaida) = 2020
-            // and month(horaSaida) = 12
-            // and day(horaSaida) = 14';
+    $sql = 'select tblmovimento.*, concat(preco,".00", " R$") as valor
+            from tblmovimento';
 
     $select = mysqli_query($conex, $sql);
 
@@ -162,18 +153,16 @@ function searchWave($vagas){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
 
-    $sql = 'select * FROM tblmovimento
+    $sql = 'select COUNT(*) FROM tblmovimento
             where statusCliente = 1';
-            //COUNT(*)
+            //
 
     $select = mysqli_query($conex, $sql);
 
     while($rsMovimento = mysqli_fetch_assoc($select)){
         $date[] =  array(
-            "placa"             => $rsMovimento['placa'],
-            "data"              => $rsMovimento['dataEntrada'],
-            "codComprovante"    => $rsMovimento['codComprovante'],
-            "statusCliente"     => $rsMovimento['statusCliente']
+            
+            "clientes ativos"             => $rsMovimento['COUNT(*)']
         );
     }
 

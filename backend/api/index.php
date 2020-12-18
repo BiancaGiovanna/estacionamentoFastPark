@@ -49,7 +49,7 @@ $app->get('/exit', function ($request, $response, $args){
                             ->write($listDate);
     else
         return $response    ->withStatus(204)
-                            ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
+                            ->write("Requisição Realizada, mas nenhum dado encontrado!!");
 });
 $app->get('/report', function ($request, $response, $args){
     require_once("../model/apiGet.php");
@@ -114,7 +114,6 @@ $app->get('/price', function ($request, $response, $args){
                             ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
 
 });
-
 
 //Metodo Post
 $app->post('/enter', function ($request, $response, $args){
@@ -217,7 +216,7 @@ $app->put('/price/{id}', function ($request, $response, $args){
 $app->put('/exit/{codigo}', function ($request, $response, $args){
 
     $codComprovante = $args['codComprovante'];
-    $idPreco = $request->getParsedBody()['idPreco'];
+    $preco = $request->getParsedBody()['preco'];
 
     $contentType = $request-> getHeaderLine('contentType');
 

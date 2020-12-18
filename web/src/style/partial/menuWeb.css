@@ -1,9 +1,9 @@
 #menuLateral {
     width: 120px;
     min-height: 90vh;
-    height: auto;
     background-color: rgb(17, 85, 130);
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }

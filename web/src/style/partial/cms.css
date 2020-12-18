@@ -1,4 +1,4 @@
- @media(max-width: 719px){
+ @media(max-width: 709px){
     button{
         position: relative;
         width: 100px;
@@ -151,7 +151,7 @@
         left: 100px;
     }
 }
-@media(min-width: 720px){
+@media(min-width: 710px){
     h1, h2{
         font-size: 1.2rem;
     }
@@ -228,7 +228,7 @@
     
     }
     .tableControl{
-        width: 600px;
+        width: 800px;
         min-height: 500px;
         height: auto;
         display: flex;

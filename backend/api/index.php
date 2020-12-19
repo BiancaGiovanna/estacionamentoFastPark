@@ -231,7 +231,8 @@ $app->put('/exit/{codigo}', function ($request, $response, $args){
                                     "status": "Sucesso"
                                     "Mensagem": "Dados Atualizados com Sucesso!"
                                     }');
-    }else{
+    }
+    else{
         return $response    ->withStatus(400)
                             ->withHeader('Content-Type', 'application/json')
                             ->write('{
@@ -242,5 +243,4 @@ $app->put('/exit/{codigo}', function ($request, $response, $args){
 
 });
 
-//carrega todos os endPoints
 $app->run();

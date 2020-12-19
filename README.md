@@ -46,8 +46,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * **Lucas Mendes** - *Banco de dados e back-end* - [Lucas Mendes](https://github.com/Luke074)
 * **Vinicius de Jesus** - *Banco de dados, back-end e Layout* - [Vinicius de Jesus](https://github.com/viniciusprog777)
 
-<!-- Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto. -->
-
 #### **Utilitários**
 
 -   Editor:  **Visual Studio Code**

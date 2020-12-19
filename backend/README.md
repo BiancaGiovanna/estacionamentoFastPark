@@ -49,4 +49,3 @@ diretorio para acessar a API:
     '" ../backend/api/index.php/exit{codigo} "';
 "É nescessario que obtenha o codigo do comprovante para atualizar a saida do carro do estacionamento e o preco que ele irá pagar(O codigo do comprovante é formado por "Segundos-Horas-dias-ano-minuto-mes
 05-16-05-20-50-12")"
-

@@ -12,7 +12,12 @@ const createTable = (placa) => {
         <table class="tableConsut">
             <tr class="tableLine">
                 <td class="tableLineStyle">${placa}</td>
-                <td class="tableLineStyle"></td>
+                <td class="tableLineStyle">
+                <button id="myBtn">
+                <img src="../src/image/icons/receipt.svg" alt="Comprovante">
+            </button>
+
+                </td>
                 <td class="tableLineStyle"></td>
                 <td class="tableLineStyle"></td>
             </tr>
@@ -26,3 +31,23 @@ const showTR = (tr) => {
 };
 
 listTable.forEach (showTR);
+
+
+/*modal para mostrar o comprovante*/ 
+const modal = document.getElementById('myModal');
+const btn = document.getElementById("myBtn");
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

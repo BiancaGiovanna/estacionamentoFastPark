@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../src/style/partial/menuMobile.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="../src/image/icons/icon-car.png" type="image/x-icon">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fast Parking</title>
 </head>
@@ -37,12 +36,6 @@
     
     <div id="contentCenter">
         <div id="menuLateral">
-            <!-- <div class="iconMenu">
-                <a href="#">
-                <img src="../src/image/icons/home_icon.svg" alt="home">
-                <h3>Home</h3>
-            </a>
-            </div> -->
             <div class="iconMenu">
                 <a href="#" onclick="switch_page(this);" id="tab_entrance">
                     <img src="../src/image/icons/entrada_icon.svg" alt="entrada">
@@ -82,7 +75,6 @@
         </div>
 
         <div class="contentPaking">
-            
             <div id="entranceVacancies" class="hidden">
                 <div class="boxVacancies">
                     <h2>Preencha o formulário abaixo para cadastrar</h2>
@@ -96,9 +88,7 @@
                         <button>Cadastrar</button>
                     </form>
                 </div>
-                
             </div>
-
             <div id="exit" class="hidden">
                 <div class="boxVacancies">
                     <form action="">
@@ -116,7 +106,6 @@
                         <button id="cobrar">Cobrar</button>
                     </form>
                 </div>
-
             </div>
             <div class="hidden"  id="waveControlPage">
                 <div class="waveControl"> 
@@ -133,17 +122,14 @@
                             <td>Data e hora de Entrada </td>
                             <td>Data e hora de saida</td>
                         </tr>
-                        
                     </table>
                 </div>
             </div>
-
             <div class="hidden" id="priceControler">
                 <div class="registerPrice">
                     <form action="" method="post">
                         <h2>Valor da primeira Hora</h2>
-                        <input type="text"  placeholder="Valor em R$ 0,00"/>
-                        
+                        <input type="text"  placeholder="Valor em R$ 0,00"/>      
                         <h2>Valor das Demais horas</h2>
                         <input type="text"  placeholder="Valor em R$ 0,00"/>
                         <button>Atualizar</button>
@@ -158,9 +144,15 @@
                 </div>
             </div>
         </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p></p>
+            </div>
+        </div>
     </div>
 
-    
+    <script src="../src/javascript/createModal.js"></script>
     <script src="../src/javascript/switchPage.js"></script>
     <script src="../src/javascript/createDiv.js"></script>
     <script src="../src/javascript/createTable.js"></script>

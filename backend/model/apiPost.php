@@ -14,22 +14,22 @@ function insertMovimento($dadosMovimento){
     $codComprovante = (string) null;
     $statusCliente = (boolean) 1;
 
-    
+    $placa = $dadosMovimento['placa'];
 
-    $sql = "
-            insert into tblmovimento 
-                (placa,
-                dataEntrada,
-                codComprovante,
-                statusCliente
-                ) values 
-                (
-                    '".$dadosMovimento."',
-                    current_timestamp(),
-                    date_format(current_time(), '%s-%H-%d-%y-%i-%m'),
-                    '".$statusCliente."'
-                );";
-    
+    $sql = "insert into tblmovimento
+            (
+            placa,
+            dataEntrada,
+            codComprovante,
+            statusCliente
+            ) values 
+            (
+                '".$placa."',
+                current_timestamp(),
+                concat_ws('-', second(curtime()), hour(curtime()), second(curtime()), month(curdate()), minute(curtime()), month(curdate())),
+                '".$statusCliente."'
+            )";
+   
     if(mysqli_query($conex, $sql)){
         $dados = convertJSON($dadosMovimento);
         return $dados;

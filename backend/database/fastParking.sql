@@ -1,6 +1,8 @@
 create database dbFastParking;
 use dbFastParking;
 
+drop table tblmovimento;
+
 create table tblpreco(
 	idPreco int not null auto_increment primary key,
     nome varchar(40) not null,
@@ -8,15 +10,12 @@ create table tblpreco(
 );
 create table tblmovimento(
 	idMovimento int not null auto_increment primary key,
-    idPreco int,
+    preco int,
     placa varchar(8) not null,
     dataEntrada datetime not null,
     horaSaida datetime,
     codComprovante text,
-    statusCliente boolean,
-    constraint Fk_movimento_preco
-    foreign key(idPreco)
-    references tblpreco(idPreco)
+    statusCliente boolean
 );
 
 insert into tblmovimento
@@ -27,7 +26,7 @@ insert into tblmovimento
     statusCliente
     ) values 
     (
-		'ABC-4321',
+		'ABC-9876',
         current_timestamp(),
         concat_ws('-', second(curtime()), hour(curtime()), second(curtime()), month(curdate()), minute(curtime()), month(curdate())),
         1
@@ -46,16 +45,16 @@ select tblmovimento.*, tblpreco.nome, concat(valor,".00", " R$") as valor
             on tblmovimento.idPreco = tblpreco.idPreco;
 
 update tblmovimento set
-idPreco = '1',
+idPreco = 8,
 horaSaida = current_timestamp(),
 statusCliente = 0
-where idMovimento = 2;
+where idMovimento = 1;
 
 update tblmovimento set
-idPreco = '1',
+preco = 12,
 horaSaida = current_timestamp(),
 statusCliente = 0
-where idMovimento = 2;
+where idMovimento = 1;
 
 select * from tblpreco;
 
@@ -75,9 +74,6 @@ insert into tblmovimento values (2, 2,'BEE4R22' ,'2020-12-10', '15:30', '17:30',
 insert into tblpreco value 
 (1, 'one hour', 8.00),
 (2, 'outher hour', 4.00);
-
-insert into tblvaga value 
-(1, 300)
 */
 insert into tblmovimento
 	(

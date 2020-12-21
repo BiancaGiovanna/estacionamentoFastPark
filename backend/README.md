@@ -2,10 +2,10 @@
 
 diretorio para acessar a API:
 
-**********************************************************************
-*                                                                    *
-*       localhost/X/estacionamentoFastPark/backend/api/index.php     *
-*                                                                    *
+***********************************************************************
+                                                                    
+       localhost/X/estacionamentoFastPark/backend/api/index.php     
+                                                                    
 **********************************************************************
 
 "X" = o nome da pasta que esta armazenando a pasta estacionamentoFastPark

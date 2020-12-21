@@ -126,14 +126,13 @@ $app->get('/lastInsert', function($request, $response, $args){
                             ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
 });
 //Metodo Post
-$app->post('/enter/{placa}', function ($request, $response, $args){
+$app->post('/enter', function ($request, $response, $args){
 
     //Recebe o contentType da Requisição
     $contentType = $request-> getHeaderLine('contentType');
 
     if($contentType = 'application/json'){
-
-        $dadosJSON = $args['placa'];
+        $dadosJSON = $request-> getParsedBody();
 
         if($dadosJSON == "" || $dadosJSON == null){
             return $response    ->withStatus(400)
@@ -146,7 +145,7 @@ $app->post('/enter/{placa}', function ($request, $response, $args){
             require_once("../model/apiPost.php");
 
             $retornoDados = insertMovimento($dadosJSON);
-
+            
             if($retornoDados){
                 return $response    ->withStatus(200)
                                     ->withHeader('Content-Type', 'application/json')
@@ -171,6 +170,7 @@ $app->post('/enter/{placa}', function ($request, $response, $args){
                                     }');
     }
 });
+
 
 //Metodo Put
 $app->put('/price/{id}/{valor}', function ($request, $response, $args){

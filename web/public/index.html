@@ -78,14 +78,14 @@
             <div id="entranceVacancies" class="hidden">
                 <div class="boxVacancies">
                     <h2>Preencha o formulário abaixo para cadastrar</h2>
-                    <form id="formularioCadastrar" action="../../backend/api/index.php" method="POST">
+                    <form id="formularioCadastrar" method="POST">
                         <div class="contentInpunt">
                             <div class="boxInputStyle">
                                 <label>Placa do Carro *</label>
-                                <input type="text" id="inputCadastrar">
+                                <input type="text" id="placa">
                             </div>
                         </div>
-                        <button id="btnCadastrar">Cadastrar</button>
+                        <button id="editMainButton">Cadastrar</button>
                     </form>
                 </div>
             </div>
@@ -95,12 +95,8 @@
                         <h2>Preencha o formulário abaixo para calcular o pagamento </h2>
                         <div class="contentInpunt">
                             <div class="boxInputStyle">
-                                <label>Placa do Carro *</label>
-                                <input type="text">
-                            </div>
-                            <div class="boxInputStyle">
                                 <label>Codigo de Entrada *</label>
-                                <input type="text">
+                                <input type="text" id="saida">
                             </div>
                         </div>
                         <button id="cobrar">Cobrar</button>

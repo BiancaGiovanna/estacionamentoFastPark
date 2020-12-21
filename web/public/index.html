@@ -78,14 +78,14 @@
             <div id="entranceVacancies" class="hidden">
                 <div class="boxVacancies">
                     <h2>Preencha o formulário abaixo para cadastrar</h2>
-                    <form action="">
+                    <form id="formularioCadastrar" action="../../backend/api/index.php" method="POST">
                         <div class="contentInpunt">
                             <div class="boxInputStyle">
                                 <label>Placa do Carro *</label>
-                                <input type="text">
+                                <input type="text" id="inputCadastrar">
                             </div>
                         </div>
-                        <button>Cadastrar</button>
+                        <button id="btnCadastrar">Cadastrar</button>
                     </form>
                 </div>
             </div>
@@ -138,9 +138,16 @@
             </div>
             <div class="hidden" id="report">
                 <div class="report">
-                    <div class="generateReport">GERAR RELATÓRIO DIARIO</div>
-                    <div class="generateReport">GERAR RELATÓRIO MENSAL</div>
-                    <div class="generateReport">GERAR RELATÓRIO ANUAL</div>
+                    <a href="#" id="btnDiario">
+                        <div class="generateReport">GERAR RELATÓRIO DIARIO</div>
+                    </a> 
+
+                    <a href="#" id="btnMensal">
+                        <div class="generateReport">GERAR RELATÓRIO MENSAL</div>
+                    </a>
+                    <a href="#" id="btnAnual">
+                        <div class="generateReport">GERAR RELATÓRIO ANUAL</div>
+                    </a> 
                 </div>
             </div>
         </div>
@@ -150,9 +157,15 @@
                 <p></p>
             </div>
         </div>
-    </div>
 
-    <script src="../src/javascript/createModal.js"></script>
+        <div id="diario" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>:3</p>
+            </div>
+        </div>
+    </div>
+    <script src="../src/javascript/convertJSON.js"></script>
     <script src="../src/javascript/switchPage.js"></script>
     <script src="../src/javascript/createDiv.js"></script>
     <script src="../src/javascript/createTable.js"></script>

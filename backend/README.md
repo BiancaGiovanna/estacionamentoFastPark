@@ -42,7 +42,7 @@ diretorio para acessar a API:
 
     \\ Acesso para a Atualizção de Dados via Put //
 # Preco
-    '" ../backend/api/index.php/price/{id} "';
+    '" ../backend/api/index.php/price/{id}/{valor} "';
 "Atualiza o valor do preco da primeira hora e a que acrescenta quando passa da primeira hora (so existem dois  valores para se alterar onde o id=1, é o da primeira hora; id=2 é o das horas complementares da primeira hora)"
 
 # Saida

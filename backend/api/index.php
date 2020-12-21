@@ -7,7 +7,7 @@ $app = new \Slim\App();
 
 $app->get('/', function($request, $response, $args){
     return $response->getBody()->write('Bem vindo a API!!');
-});
+}); 
 
 //Metodo Get
 $app->get('/enter', function ($request, $response, $args){
@@ -51,17 +51,14 @@ $app->get('/exit', function ($request, $response, $args){
         return $response    ->withStatus(204)
                             ->write("Requisição Realizada, mas nenhum dado encontrado!!");
 });
-$app->get('/report', function ($request, $response, $args){
+$app->get('/report/{type}', function ($request, $response, $args){
     require_once("../model/apiGet.php");
 
-    if(isset($request -> getQueryParams()['dataEntrada'])){
+    $type = $args['type'];
+    
 
-        $dataEntrada = $request-> getQueryParams()['dataEntrada'];
+    $listDate = searchDate($type);
 
-        $listDate = searchDate($dataEntrada);
-    }else{
-        $listDate = searchDate(0);
-    }
 
     if($listDate)
         return $response    ->withStatus(200)
@@ -114,16 +111,29 @@ $app->get('/price', function ($request, $response, $args){
                             ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
 
 });
+$app->get('/lastInsert', function($request, $response, $args){
+    require_once("../model/apiGet.php");
+    
+        $listDate = searchCode();
+    
 
+    if($listDate)
+        return $response    ->withStatus(200)
+                            ->withHeader('Content-Type', 'application/json')
+                            ->write($listDate);
+    else
+        return $response    ->withStatus(204)
+                            ->write("Requisição Realizada, mas nenhum dado encontrado!!!");
+});
 //Metodo Post
-$app->post('/enter', function ($request, $response, $args){
+$app->post('/enter/{placa}', function ($request, $response, $args){
 
     //Recebe o contentType da Requisição
     $contentType = $request-> getHeaderLine('contentType');
 
     if($contentType = 'application/json'){
 
-        $dadosJSON = $request-> getParsedBody();
+        $dadosJSON = $args['placa'];
 
         if($dadosJSON == "" || $dadosJSON == null){
             return $response    ->withStatus(400)
@@ -163,11 +173,12 @@ $app->post('/enter', function ($request, $response, $args){
 });
 
 //Metodo Put
-$app->put('/price/{id}', function ($request, $response, $args){
+$app->put('/price/{id}/{valor}', function ($request, $response, $args){
     $contentType = $request-> getHeaderLine('contentType');
 
     $id = $args['id'];
-    $preco = $request->getParsedBody()['valor'];
+    $preco = $args['valor'];
+    //$request->getParsedBody()['valor'];
 
     if($contentType = 'application/json'){
 
@@ -215,14 +226,13 @@ $app->put('/price/{id}', function ($request, $response, $args){
 
 $app->put('/exit/{codigo}', function ($request, $response, $args){
 
-    $codComprovante = $args['codComprovante'];
-    $preco = $request->getParsedBody()['preco'];
+    $codComprovante = $args['codigo'];
 
     $contentType = $request-> getHeaderLine('contentType');
 
     require_once("../model/apiPut.php");
 
-    $retornoDados = updateExit($codComprovante, $idPreco);
+    $retornoDados = updateExit($codComprovante);
 
     if($retornoDados){
         return $response    ->withStatus(200)

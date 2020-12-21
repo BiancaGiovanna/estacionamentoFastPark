@@ -13,15 +13,16 @@ const createTable = (placa) => {
             <tr class="tableLine">
                 <td class="tableLineStyle">${placa}</td>
                 <td class="tableLineStyle">
-                <button id="myBtn">
-                <img src="../src/image/icons/receipt.svg" alt="Comprovante">
-            </button>
-
+                <button class="comprovante">
+                    <img src="../src/image/icons/receipt.svg" alt="Comprovante">
+                </button>
                 </td>
                 <td class="tableLineStyle"></td>
                 <td class="tableLineStyle"></td>
             </tr>
         </table>
+
+        
         `;
     return newTR;
 }
@@ -35,9 +36,8 @@ listTable.forEach (showTR);
 
 /*modal para mostrar o comprovante*/ 
 const modal = document.getElementById('myModal');
-const btn = document.getElementById("myBtn");
+const btn = document.querySelectorAll(".comprovante");
 const span = document.getElementsByClassName("close")[0];
-
 btn.onclick = function() {
     modal.style.display = "block";
 }
@@ -51,3 +51,5 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+ btn.forEach((btn) => {btn.addEventListener("click", (event) => { modal.style.display = "block";});});

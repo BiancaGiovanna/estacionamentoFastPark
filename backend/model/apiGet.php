@@ -71,7 +71,7 @@ function searchExit($dataEntrada){
         return false;
 
 }
-function searchDate($dataEntrada){
+function searchDate($type){
     require_once('../controller/connectionMysql.php');
 
     require_once('../controller/settings.php');
@@ -79,16 +79,35 @@ function searchDate($dataEntrada){
     if(!$conex = connectionMysql()){
         echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
     }
-
-    $sql = 'select tblmovimento.*, concat(preco,".00", " R$") as valor
-            from tblmovimento';
+    if ($type == 'year') {
+        $sql = 'select * from tblmovimento
+                where preco <> ""
+                and statusCliente = 0
+                and year(horaSaida) = year(current_date())';
+    }
+    elseif ($type == 'month') {
+        $sql = 'select * from tblmovimento
+        where preco <> ""
+        and statusCliente = 0
+        and year(horaSaida) = year(current_date())
+        and month(horaSaida) = month(current_date());';
+    }
+    elseif ($type == 'day') {
+        $sql = 'select * from tblmovimento
+        where preco <> ""
+        and statusCliente = 0
+        and year(horaSaida) = year(current_date())
+        and month(horaSaida) = month(current_date())
+        and day(horaSaida) = day(current_date());';
+    }
+    
 
     $select = mysqli_query($conex, $sql);
 
     while($rsMovimento = mysqli_fetch_assoc($select)){
         $date[] =  array(
             "idMovimento"       => $rsMovimento['idMovimento'],
-            "valor"             => $rsMovimento['valor'],
+            "valor"             => $rsMovimento['preco'],
             "placa"             => $rsMovimento['placa'],
             "dataEntrada"       => $rsMovimento['dataEntrada'],
             "horaSaida"         => $rsMovimento['horaSaida'],
@@ -163,6 +182,42 @@ function searchWave($vagas){
         $date[] =  array(
             
             "clientes ativos"             => $rsMovimento['COUNT(*)']
+        );
+    }
+
+    //convertendo para JSON
+    if(isset($date))
+        $listDateJSON = convertJSON($date);
+    else
+        return false;
+
+    //vendo se a variavel existe
+    if(isset($listDateJSON))
+        return $listDateJSON;
+    else
+        return false;
+
+}
+function searchCode(){
+    require_once('../controller/connectionMysql.php');
+
+    require_once('../controller/settings.php');
+
+    if(!$conex = connectionMysql()){
+        echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
+    }
+
+    $sql = 'select tblmovimento.placa, tblmovimento.codComprovante, tblmovimento.dataEntrada
+            from tblmovimento 
+            order by tblmovimento.idMovimento desc limit 1';
+
+    $select = mysqli_query($conex, $sql);
+
+    while($rsMovimento = mysqli_fetch_assoc($select)){
+        $date[] =  array(
+            "placa"             => $rsMovimento['placa'],
+            "data"              => $rsMovimento['dataEntrada'],
+            "codComprovante"    => $rsMovimento['codComprovante']
         );
     }
 
